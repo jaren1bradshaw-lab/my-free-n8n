@@ -1,0 +1,58 @@
+name: ProKope
+options:
+  minimumXcodeGenVersion: 2.38.0
+  deploymentTarget:
+    iOS: "17.0"
+    watchOS: "10.0"
+configs:
+  Debug: debug
+  Release: release
+settings:
+  base:
+    PRODUCT_NAME: ProKope
+    DEVELOPMENT_TEAM: ""
+    SWIFT_VERSION: 5.0
+  configs:
+    Debug:
+      baseConfiguration: Config/Debug.xcconfig
+    Release:
+      baseConfiguration: Config/Release.xcconfig
+targets:
+  ProKopeApp:
+    type: application
+    platform: iOS
+    sources:
+      - App
+      - Features
+      - Core
+      - SharedUI
+      - Data
+      - Resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.prokope
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGN_STYLE: Automatic
+    info:
+      path: Resources/ProKopeApp-Info.plist
+      properties:
+        CFBundleDisplayName: ProKope
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+  ProKopeWatchApp:
+    type: application.watchapp2
+    platform: watchOS
+    sources:
+      - WatchApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.prokope.watchkitapp
+        CODE_SIGN_STYLE: Automatic
+    info:
+      path: Resources/ProKopeWatchApp-Info.plist
+      properties:
+        CFBundleDisplayName: ProKope Watch
+        WKApplication: true
+        WKCompanionAppBundleIdentifier: com.example.prokope
